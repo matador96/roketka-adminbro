@@ -46,6 +46,7 @@ module.exports = new Sequelize(
     config.database.username,
     config.database.password,
     {
+        logging: false,
         operatorsAliases,
         host: config.database.host,
         port: config.database.port,

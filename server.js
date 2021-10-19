@@ -42,12 +42,14 @@ const run = async () => {
         cookieName: "admin-bro",
         cookiePassword: "asfh2jk5435fdh",
         authenticate: async (email, password) => {
-          const admin = await Admins.findOne({ email });
-          if (admin) {
-            console.log("MMA-A7u-7JT-Vwp");
+          // const salt = await bcrypt.genSalt(10);
+          // const hash = await bcrypt.hash(password, salt);
+          // console.log(hash)
 
+          const admin = await Admins.findOne({ email, password });
+          if (admin) {
             const matched = await bcrypt.compare(
-              "MMA-A7u-7JT-Vwp",
+              password,
               admin.encryptedPassword
             );
             if (matched) {
